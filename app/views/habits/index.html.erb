@@ -1,0 +1,12 @@
+<h1>Your Habits</h1>
+<%= link_to 'New Habit', new_habit_path, class: "text-blue-500" %>
+
+<ul>
+  <% @habits.each do |habit| %>
+    <li>
+      <%= link_to habit.name, habit_path(habit) %>
+      <%= link_to "Edit", edit_habit_path(habit), class: "text-yellow-500 ml-2" %>
+      <%= link_to "Delete", habit_path(habit), method: :delete, data: { confirm: "Are you sure?" }, class: "text-red-500 ml-2" %>
+    </li>
+  <% end %>
+</ul>

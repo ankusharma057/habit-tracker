@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-
+  get "habits/index"
+  get "habits/new"
+  get "habits/edit"
+  get "habits/show"
   devise_for :users
-  devise_scope :user do
-    root to: "devise/sessions#new"
+  authenticate :user do
+    resources :habits do
+      resources :habit_checkins, only: [:create, :destroy]
+    end
   end
+
+  root to: "habits#index"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
