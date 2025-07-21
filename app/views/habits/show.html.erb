@@ -1,4 +1,8 @@
 <h2><%= @habit.name %></h2>
 <p><%= @habit.description %></p>
 
-<%= link_to "Back", habits_path %>
+<h3>Mark as Done</h3>
+<%= form_with url: habit_habit_checkins_path(@habit), method: :post do %>
+  <%= date_field_tag :date, Date.today %>
+  <%= submit_tag "Check In" %>
+<% end %>
