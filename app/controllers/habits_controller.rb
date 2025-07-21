@@ -7,6 +7,7 @@ class HabitsController < ApplicationController
   end
 
   def show
+    @habit = current_user.habits.includes(:habit_checkins).find(params[:id])
   end
 
   def new
