@@ -1,12 +1,13 @@
-<h1>Your Habits</h1>
 <%= link_to 'New Habit', new_habit_path, class: "text-blue-500" %>
-
-<ul>
+<h1 class="text-xl font-bold mb-4">Your Habits</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
   <% @habits.each do |habit| %>
-    <li>
-      <%= link_to habit.name, habit_path(habit) %>
-      <%= link_to "Edit", edit_habit_path(habit), class: "text-yellow-500 ml-2" %>
-      <%= link_to "Delete", habit_path(habit), method: :delete, data: { confirm: "Are you sure?" }, class: "text-red-500 ml-2" %>
-    </li>
+    <div class="p-4 border rounded-lg shadow-md bg-white">
+      <h2 class="text-lg font-semibold"><%= habit.name %></h2>
+      <p><%= habit.description %></p>
+      <p>Streak: <%= habit.current_streak %> | Consistency: <%= habit.consistency_percentage %>%</p>
+      <%= link_to "View", habit_path(habit), class: "text-blue-500" %>
+    </div>
   <% end %>
-</ul>
+</div>
+
