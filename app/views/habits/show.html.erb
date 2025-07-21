@@ -1,4 +1,10 @@
 <h3>Mini Calendar</h3>
+<h3>Stats</h3>
+<ul>
+  <li>Current Streak: <%= @habit.current_streak %> days</li>
+  <li>Longest Streak: <%= @habit.longest_streak %> days</li>
+  <li>Consistency: <%= @habit.consistency_percentage %> %</li>
+</ul>
 <div class="grid grid-cols-7 gap-2 mt-4">
   <% (Date.today.beginning_of_month..Date.today.end_of_month).each do |date| %>
     <% checked_in = @habit.habit_checkins.exists?(date: date) %>
